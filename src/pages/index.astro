@@ -160,9 +160,43 @@ import imgExplorationResult from '../assets/projects/全局探索结果.png';
 				</div>
 			</section>
 		</main>
+
+		<div id="lightbox" class="lightbox">
+			<span class="lightbox-close">&times;</span>
+			<img id="lightbox-img" src="" alt="" />
+		</div>
+
 		<Footer />
 	</body>
 </html>
+
+<script>
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img');
+	const closeBtn = document.querySelector('.lightbox-close');
+
+	document.querySelectorAll('.gallery figure img').forEach(img => {
+		img.addEventListener('click', () => {
+			lightboxImg.src = img.src;
+			lightboxImg.alt = img.alt;
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		});
+	});
+
+	function closeLightbox() {
+		lightbox.classList.remove('active');
+		document.body.style.overflow = '';
+	}
+
+	closeBtn.addEventListener('click', closeLightbox);
+	lightbox.addEventListener('click', (e) => {
+		if (e.target === lightbox) closeLightbox();
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') closeLightbox();
+	});
+</script>
 
 <style>
 	.hero {
@@ -274,6 +308,12 @@ import imgExplorationResult from '../assets/projects/全局探索结果.png';
 		border-radius: 6px;
 		overflow: hidden;
 		background: #fff;
+		cursor: pointer;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	.gallery figure:hover {
+		transform: scale(1.03);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 	}
 	.gallery figure img {
 		width: 100%;
@@ -287,6 +327,38 @@ import imgExplorationResult from '../assets/projects/全局探索结果.png';
 		font-size: 0.85em;
 		color: rgb(var(--gray));
 		text-align: center;
+	}
+
+	.lightbox {
+		display: none;
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		background: rgba(0, 0, 0, 0.85);
+		justify-content: center;
+		align-items: center;
+	}
+	.lightbox.active {
+		display: flex;
+	}
+	.lightbox img {
+		max-width: 90vw;
+		max-height: 90vh;
+		border-radius: 4px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+	}
+	.lightbox-close {
+		position: absolute;
+		top: 1em;
+		right: 1.5em;
+		font-size: 2.5em;
+		color: #fff;
+		cursor: pointer;
+		line-height: 1;
+		z-index: 10000;
+	}
+	.lightbox-close:hover {
+		color: #ccc;
 	}
 
 	.skills {
