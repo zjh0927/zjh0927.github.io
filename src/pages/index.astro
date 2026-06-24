@@ -1,8 +1,18 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+import imgObsViz from '../assets/projects/障碍物识别-可视化.png';
+import imgObsReal from '../assets/projects/障碍物识别-实物.jpg';
+import imgLowObsViz from '../assets/projects/低矮可跨域障碍物识别-可视化.png';
+import imgLowObsReal from '../assets/projects/低矮可跨域障碍物识别-实物.jpg';
+import imgTraversable from '../assets/projects/可通行区域可视化.png';
+import imgVoronoiFramework from '../assets/projects/维诺图自主探索导航算法框架.png';
+import imgVoronoiReal from '../assets/projects/实机维诺图探索可视化.png';
+import imgExplorationResult from '../assets/projects/全局探索结果.png';
 ---
 
 <!doctype html>
@@ -51,12 +61,62 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 				<div class="project-item">
 					<h3>灭火、救援机器人共性关键技术研究（国家重点研发计划）<span class="project-date">2024.10 – 至今</span></h3>
-					<ul>
-						<li>基于 FAST-LIO2 引入 OctVox 紧凑地图结构与 HKNN 启发式 KNN 搜索，ARM 平台上长距离 (>100m) 定位精度 &lt;15cm</li>
-						<li>改进 TEB 避障算法，融合时空体素层 (STVL) 作为局部代价地图，实现动态避障、越障与穿越</li>
-						<li>基于动态维诺图开发自主探索器，融合 YOLO 目标检测，实现 30m×30m 未知室内环境 Object-Goal Nav</li>
-						<li>基于 FFmpeg H.265 编码实现长距离窄带宽无线 mesh 组网下的多路视频流收发，单路 720p@30fps 压缩至 1Mbps 以内</li>
-					</ul>
+
+					<div class="project-sub">
+						<h4>SLAM 定位</h4>
+						<p>基于 FAST-LIO2 引入 OctVox 紧凑地图结构与 HKNN 启发式 KNN 搜索，在 ARM 平台上实现长距离 (&gt;100m) 定位精度 &lt;15cm。</p>
+					</div>
+
+					<div class="project-sub">
+						<h4>障碍物识别与避障</h4>
+						<p>改进 TEB 避障算法，融合时空体素层 (STVL) 作为局部代价地图，实现动态避障、越障与穿越。</p>
+						<div class="gallery">
+							<figure>
+								<Image src={imgObsViz} alt="障碍物识别可视化" />
+								<figcaption>障碍物识别可视化</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgObsReal} alt="障碍物识别实拍" />
+								<figcaption>障碍物识别实拍</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgLowObsViz} alt="低矮可跨域障碍物识别可视化" />
+								<figcaption>低矮可跨域障碍物识别</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgLowObsReal} alt="低矮可跨域障碍物识别实拍" />
+								<figcaption>越障识别实拍</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgTraversable} alt="可通行区域可视化" />
+								<figcaption>可通行区域可视化</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="project-sub">
+						<h4>自主探索</h4>
+						<p>基于动态维诺图开发自主探索器，融合 YOLO 目标检测，实现 30m×30m 未知室内环境 Object-Goal Nav。</p>
+						<div class="gallery">
+							<figure>
+								<Image src={imgVoronoiFramework} alt="维诺图自主探索导航算法框架" />
+								<figcaption>维诺图探索算法框架</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgVoronoiReal} alt="实机维诺图探索可视化" />
+								<figcaption>实机维诺图探索</figcaption>
+							</figure>
+							<figure>
+								<Image src={imgExplorationResult} alt="全局探索结果" />
+								<figcaption>全局探索结果</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="project-sub">
+						<h4>视频传输</h4>
+						<p>基于 FFmpeg H.265 编码实现长距离窄带宽无线 mesh 组网下的多路视频流收发，单路 720p@30fps 压缩至 1Mbps 以内。</p>
+					</div>
 				</div>
 
 				<div class="project-item">
@@ -187,6 +247,46 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	.project-item li {
 		margin-bottom: 0.3em;
 		line-height: 1.7;
+	}
+
+	.project-sub {
+		margin-bottom: 1.5em;
+	}
+	.project-sub h4 {
+		font-size: 1em;
+		margin-bottom: 0.3em;
+	}
+	.project-sub p {
+		margin-bottom: 0.6em;
+		color: rgb(var(--gray-dark));
+		line-height: 1.7;
+	}
+
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1em;
+		margin: 1em 0;
+	}
+	.gallery figure {
+		margin: 0;
+		border: 1px solid rgba(var(--gray), 0.2);
+		border-radius: 6px;
+		overflow: hidden;
+		background: #fff;
+	}
+	.gallery figure img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+		aspect-ratio: 16 / 10;
+	}
+	.gallery figcaption {
+		padding: 0.5em;
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		text-align: center;
 	}
 
 	.skills {
