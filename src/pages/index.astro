@@ -29,14 +29,12 @@ import imgGraduation from '../assets/projects/zjh本科毕业照.jpg';
 			<section class="hero">
 				<div class="hero-top">
 					<Image class="portrait" src={imgPortrait} alt="证件照" />
-					<div>
-						<h1>曾家豪 <span class="name-en">Zeng Jiahao</span></h1>
-						<p class="tagline">机器人感知 / SLAM / 导航</p>
-					</div>
+					<h1>曾家豪 <span class="name-en">Zeng Jiahao</span></h1>
 				</div>
+				<p class="tagline">机器人感知 / SLAM / 导航</p>
 				<p class="intro">
 					北京航空航天大学 机器人工程 硕士研究生。研究方向为机器人感知与导航，
-					包括激光雷达 SLAM、自主探索、路径规划与嵌入式系统部署。
+					包括 SLAM、自主探索、路径规划与嵌入式系统部署。
 				</p>
 				<p class="contact">
 					<span>📍 北京</span>
@@ -225,19 +223,15 @@ import imgGraduation from '../assets/projects/zjh本科毕业照.jpg';
 		gap: 1.5em;
 		flex-wrap: wrap;
 	}
+	.hero-top h1 {
+		margin: 0;
+		line-height: 1.2;
+	}
 	.portrait {
 		width: 100px;
 		height: 130px;
 		object-fit: cover;
 		border-radius: 4px;
-	}
-	.hero-top h1 {
-		font-size: 2.5em;
-		margin-bottom: 0.1em;
-		text-align: left;
-	}
-	.hero-top .tagline {
-		text-align: left;
 	}
 	.hero h1 {
 		font-size: 2.5em;
