@@ -1,0 +1,204 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>曾家豪 <span class="name-en">Zeng Jiahao</span></h1>
+				<p class="tagline">机器人感知 / SLAM / 导航</p>
+				<p class="intro">
+					北京航空航天大学 机器人工程 硕士研究生。研究方向为机器人感知与导航，
+					包括激光雷达 SLAM、自主探索、路径规划与嵌入式系统部署。
+				</p>
+				<p class="contact">
+					<span>📍 北京</span>
+					<span>📧 3083448680@qq.com</span>
+					<span>📱 191-1889-2896</span>
+				</p>
+			</section>
+
+			<section>
+				<h2>教育经历</h2>
+				<div class="edu-item">
+					<div class="edu-header">
+						<strong>北京航空航天大学</strong>
+						<span class="edu-meta">机器人工程 · 硕士 | 2024.09 – 2027.06</span>
+					</div>
+					<p>GPA 3.66/4.0 | 深度学习及应用 (94)、空间机构与现代机器人学 (90)、单片机系统 (95)、矩阵理论 (94)</p>
+					<p>Y709-1 研究生党支部书记，2026 年校级优秀学生干部</p>
+				</div>
+				<div class="edu-item">
+					<div class="edu-header">
+						<strong>福州大学</strong>
+						<span class="edu-meta">机械设计制造及其自动化 · 本科 | 2020.09 – 2024.06</span>
+					</div>
+					<p>GPA 前 30% | 机器人学、机器视觉及应用、微机原理、C++ 程序设计</p>
+				</div>
+			</section>
+
+			<section>
+				<h2>项目经历</h2>
+
+				<div class="project-item">
+					<h3>灭火、救援机器人共性关键技术研究（国家重点研发计划）<span class="project-date">2024.10 – 至今</span></h3>
+					<ul>
+						<li>基于 FAST-LIO2 引入 OctVox 紧凑地图结构与 HKNN 启发式 KNN 搜索，ARM 平台上长距离 (>100m) 定位精度 &lt;15cm</li>
+						<li>改进 TEB 避障算法，融合时空体素层 (STVL) 作为局部代价地图，实现动态避障、越障与穿越</li>
+						<li>基于动态维诺图开发自主探索器，融合 YOLO 目标检测，实现 30m×30m 未知室内环境 Object-Goal Nav</li>
+						<li>基于 FFmpeg H.265 编码实现长距离窄带宽无线 mesh 组网下的多路视频流收发，单路 720p@30fps 压缩至 1Mbps 以内</li>
+					</ul>
+				</div>
+
+				<div class="project-item">
+					<h3>聚变堆遥操作维护重载臂底盘系统（国家重大科技基础设施项目）<span class="project-date">2024.11 – 2026.06</span></h3>
+					<ul>
+						<li>基于倍福 PLC + TwinCAT 3 开发重载机械臂 CMOR 底盘运动控制系统</li>
+						<li>设计多层状态机，采用 PLCopen 运动控制规范实现 8 轴 EtherCAT 伺服同步控制与安全联锁</li>
+						<li>设计并搭建 ADS 上位机通信 UI 界面，实现与 PLC 的并发同步通信</li>
+					</ul>
+				</div>
+
+				<div class="project-item">
+					<h3>视频图像去模糊 <span class="project-date">2024.11 – 2025.06</span></h3>
+					<ul>
+						<li>基于 DeblurGANv2 改进对抗生成网络去模糊算法，SSIM/PSNR 平均提升 10%，总体指标提升近 40%</li>
+						<li>使用 TensorRT 进行模型加速，在 Jetson Orin NX 上实现实时视频流去模糊 (&gt;30fps)</li>
+					</ul>
+				</div>
+
+				<div class="project-item">
+					<h3>移动作业机器人运动控制研究（本科毕业设计）<span class="project-date">2023.11 – 2024.05</span></h3>
+					<ul>
+						<li>基于 Informed-RRT* 编写 ROS 导航全局规划插件，搭建 Gazebo 仿真环境测试路径规划算法</li>
+						<li>实机使用 Gmapping/Cartographer 建图并实现运动规划导航</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2>技能</h2>
+				<div class="skills">
+					<span class="skill-tag">ROS2 / ROS</span>
+					<span class="skill-tag">C++ / Python</span>
+					<span class="skill-tag">FFmpeg</span>
+					<span class="skill-tag">PyTorch</span>
+					<span class="skill-tag">传感器标定</span>
+					<span class="skill-tag">嵌入式开发 (Jetson)</span>
+					<span class="skill-tag">Nav2 导航框架</span>
+					<span class="skill-tag">SLAM</span>
+					<span class="skill-tag">TensorRT</span>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		text-align: center;
+		padding: 3em 0 2em;
+	}
+	.hero h1 {
+		font-size: 2.5em;
+		margin-bottom: 0.2em;
+	}
+	.name-en {
+		font-weight: 400;
+		font-size: 0.5em;
+		color: rgb(var(--gray));
+		display: block;
+	}
+	.tagline {
+		font-size: 1.3em;
+		color: var(--accent);
+		margin-bottom: 0.8em;
+	}
+	.intro {
+		max-width: 600px;
+		margin: 0 auto 1em;
+		color: rgb(var(--gray-dark));
+		line-height: 1.8;
+	}
+	.contact {
+		display: flex;
+		justify-content: center;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		color: rgb(var(--gray));
+		font-size: 0.95em;
+	}
+
+	section {
+		max-width: 800px;
+		margin: 0 auto 3em;
+	}
+	section h2 {
+		border-bottom: 2px solid var(--accent);
+		padding-bottom: 0.3em;
+		margin-bottom: 1em;
+	}
+
+	.edu-item {
+		margin-bottom: 1.5em;
+	}
+	.edu-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+		margin-bottom: 0.3em;
+	}
+	.edu-meta {
+		color: rgb(var(--gray));
+		font-size: 0.9em;
+	}
+
+	.project-item {
+		margin-bottom: 2em;
+	}
+	.project-item h3 {
+		font-size: 1.1em;
+		margin-bottom: 0.5em;
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+	}
+	.project-date {
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+		font-weight: 400;
+	}
+	.project-item ul {
+		margin: 0;
+		padding-left: 1.2em;
+	}
+	.project-item li {
+		margin-bottom: 0.3em;
+		line-height: 1.7;
+	}
+
+	.skills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+	.skill-tag {
+		background: rgba(var(--accent), 0.1);
+		color: var(--accent);
+		padding: 0.3em 0.8em;
+		border-radius: 20px;
+		font-size: 0.9em;
+	}
+</style>
