@@ -74,12 +74,12 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 
 					<div class="project-sub">
 						<h4>SLAM 定位</h4>
-						<p>基于 FAST-LIO2 引入 OctVox 紧凑地图结构与 HKNN 启发式 KNN 搜索，在 ARM 平台上实现长距离 (&gt;100m) 定位精度 &lt;15cm。</p>
+						<p>基于 FAST-LIO 和 FAST-LIO2 算法，引入 <strong>OctVox 紧凑地图结构</strong>与 <strong>HKNN 启发式 KNN 搜索策略</strong>，在保证 LIO 系统定位精度的前提下减少计算开销，避免在 ARM 平台（Jetson 系列）上抢占过多用于导航和视觉检测的算力。在无回环检测情况下，实现长距离（&gt;100m）定位精度 &lt;15cm。</p>
 					</div>
 
 					<div class="project-sub">
 						<h4>障碍物识别与避障</h4>
-						<p>改进 TEB 避障算法，融合时空体素层 (STVL) 作为局部代价地图，实现动态避障、越障与穿越。</p>
+						<p>基于 Nav2 开源导航框架改进 TEB 避障算法，引入路径平滑度与曲率约束作为 g2o 图的边（edge），同时采用 <strong>时空体素层</strong>（STVL, Spatio Temporal Voxel Layer）作为 Nav2 的局部代价地图，引导障碍物识别、避障与穿越规划。使用 Livox-mid70 小视场角激光雷达与 USB 工业广角相机，实现了实机动态避障、越障和穿越。</p>
 						<div class="gallery">
 							<figure>
 								<Image src={imgObsViz} alt="障碍物识别可视化" />
@@ -106,7 +106,7 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 
 					<div class="project-sub">
 						<h4>自主探索</h4>
-						<p>基于动态维诺图开发自主探索器，融合 YOLO 目标检测，实现 30m×30m 未知室内环境 Object-Goal Nav。</p>
+						<p>基于 <strong>动态维诺图</strong>并在 Nav2 导航框架上开发自主探索器：实时构建二维栅格地图，并在其上构建动态维诺骨架图，针对 Livox-mid70 小视场角激光雷达优化前沿点和导航点的选取，融合 YOLO 目标检测算法寻找目标物体。成功实现 30m×30m 未知室内环境下的 <strong>物体目标导航</strong>（Object-Goal Nav），预计产出论文一篇。</p>
 						<div class="gallery">
 							<figure>
 								<Image src={imgVoronoiFramework} alt="维诺图自主探索导航算法框架" />
@@ -125,7 +125,7 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 
 					<div class="project-sub">
 						<h4>视频传输</h4>
-						<p>基于 FFmpeg H.265 编码实现长距离窄带宽无线 mesh 组网下的多路视频流收发，单路 720p@30fps 压缩至 1Mbps 以内。</p>
+						<p>基于 FFmpeg 实现 USB 工业相机实时视频流编码，编码格式为 H.265，传输所需带宽相比原始 MJPEG 格式仅为约 5%，相比 H.264 可再压缩约 50%，即一路 1280×720 @30fps 的视频流可压缩至 <strong>1Mbps 以内</strong>。实现了长距离、窄带宽、高波动的无线 mesh 组网下的多路视频流收发。已申请软著一项。</p>
 						<div class="gallery">
 							<figure>
 								<Image src={imgVideoStream} alt="多路视频传输可视化" />
@@ -141,26 +141,31 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 
 				<div class="project-item">
 					<h3>聚变堆遥操作维护重载臂底盘系统（国家重大科技基础设施项目）<span class="project-date">2024.11 – 2026.06</span></h3>
+					<p class="project-desc">面向聚变反应堆内部操作维护需求，研发遥操作重载机械臂底盘运动系统，实现超重型机械臂的平稳运动行进与位置锁定。</p>
 					<ul>
-						<li>基于倍福 PLC + TwinCAT 3 开发重载机械臂 CMOR 底盘运动控制系统</li>
-						<li>设计多层状态机，采用 PLCopen 运动控制规范实现 8 轴 EtherCAT 伺服同步控制与安全联锁</li>
-						<li>设计并搭建 ADS 上位机通信 UI 界面，实现与 PLC 的并发同步通信</li>
+						<li>采用倍福 PLC 作为主控，基于 <strong>TwinCAT 3 + ST 结构化文本</strong>开发，设计多层状态机</li>
+						<li>采用 <strong>PLCopen 运动控制规范</strong>实现 8 轴 EtherCAT 伺服同步控制与安全联锁</li>
+						<li>设计并搭建 <strong>ADS 上位机通信 UI 界面</strong>，与倍福 PLC 之间实现并发同步通信</li>
 					</ul>
 				</div>
 
 				<div class="project-item">
 					<h3>视频图像去模糊 <span class="project-date">2024.11 – 2025.06</span></h3>
+					<p class="project-desc">面向存在高频抖动下的场景（无人机或其他高速运动场景），开发图像模糊评价体系和去模糊算法，解决画面模糊导致的识别检测失效问题。</p>
 					<ul>
-						<li>基于 DeblurGANv2 改进对抗生成网络去模糊算法，SSIM/PSNR 平均提升 10%，总体指标提升近 40%</li>
-						<li>使用 TensorRT 进行模型加速，在 Jetson Orin NX 上实现实时视频流去模糊 (&gt;30fps)</li>
+						<li>基于 <strong>DeblurGANv2</strong> 改进开发，针对高频真实抖动产生的运动模糊图像，设计对抗生成网络去模糊算法</li>
+						<li>SSIM/PSNR 等传统指标平均提升 10%，总体评价指标提升近 40%，YOLO 目标检测成功率显著提升</li>
+						<li>使用 <strong>TensorRT</strong> 进行模型加速，在 Jetson Orin NX 上实现实时视频流去模糊（&gt;30fps）</li>
 					</ul>
 				</div>
 
 				<div class="project-item">
 					<h3>移动作业机器人运动控制研究（本科毕业设计）<span class="project-date">2023.11 – 2024.05</span></h3>
+					<p class="project-desc">针对移动机器人运动规划需求，设计整体运动规划方法，编写 ROS 控制程序，完成仿真与实机实验。</p>
 					<ul>
-						<li>基于 Informed-RRT* 编写 ROS 导航全局规划插件，搭建 Gazebo 仿真环境测试路径规划算法</li>
-						<li>实机使用 Gmapping/Cartographer 建图并实现运动规划导航</li>
+						<li>对经典 RRT 算法及其改进算法进行原理分析，将 <strong>Informed-RRT* 算法</strong>编写为 ROS 导航全局规划插件</li>
+						<li>搭建 Gazebo 仿真环境测试全局路径规划算法，实机使用 <strong>Gmapping / Cartographer</strong> 建图并实现运动规划导航</li>
+						<li>设计 Rviz 上位机控制机械臂进行抓取作业</li>
 					</ul>
 				</div>
 			</section>
@@ -323,6 +328,11 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 	}
 	.project-item li {
 		margin-bottom: 0.3em;
+		line-height: 1.7;
+	}
+	.project-desc {
+		color: rgb(var(--gray-dark));
+		margin-bottom: 0.5em;
 		line-height: 1.7;
 	}
 
