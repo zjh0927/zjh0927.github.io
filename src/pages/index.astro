@@ -17,6 +17,12 @@ import imgVideoStream from '../assets/projects/多路视频传输可视化.png';
 import imgPortrait from '../assets/projects/zjh证件照.jpg';
 import imgGraduation from '../assets/projects/zjh本科毕业照.jpg';
 import imgSoftwareCert from '../assets/projects/基于自组网的室内机器人远距离通信软件.png';
+import imgOriginal1 from '../assets/projects/1.jpg';
+import imgBlurred1 from '../assets/projects/1_blurred3.jpg';
+import imgDeblurred1 from '../assets/projects/1_deblurred3.jpg';
+import imgDetOrig1 from '../assets/projects/1_detection.jpg';
+import imgDetBlurred1 from '../assets/projects/eval1_blurred3_detection.jpg';
+import imgDetDeblurred1 from '../assets/projects/eval1_deblurred3_detection.jpg';
 ---
 
 <!doctype html>
@@ -157,6 +163,34 @@ import imgSoftwareCert from '../assets/projects/基于自组网的室内机器�
 						<li>SSIM/PSNR 等传统指标平均提升 10%，总体评价指标提升近 40%，YOLO 目标检测成功率显著提升</li>
 						<li>使用 <strong>TensorRT</strong> 进行模型加速，在 Jetson Orin NX 上实现实时视频流去模糊（&gt;30fps）</li>
 					</ul>
+					<div class="gallery">
+						<figure>
+							<Image src={imgOriginal1} alt="原始清晰图像" />
+							<figcaption>原始清晰图像</figcaption>
+						</figure>
+						<figure>
+							<Image src={imgBlurred1} alt="仿运动模糊图像" />
+							<figcaption>运动模糊图像</figcaption>
+						</figure>
+						<figure>
+							<Image src={imgDeblurred1} alt="去模糊结果" />
+							<figcaption>去模糊结果</figcaption>
+						</figure>
+					</div>
+					<div class="gallery">
+						<figure>
+							<Image src={imgDetOrig1} alt="原始图像检测结果" />
+							<figcaption>原始图像 YOLO 检测</figcaption>
+						</figure>
+						<figure>
+							<Image src={imgDetBlurred1} alt="模糊图像检测结果" />
+							<figcaption>模糊图像 YOLO 检测（漏检）</figcaption>
+						</figure>
+						<figure>
+							<Image src={imgDetDeblurred1} alt="去模糊后检测结果" />
+							<figcaption>去模糊后 YOLO 检测（恢复）</figcaption>
+						</figure>
+					</div>
 				</div>
 
 				<div class="project-item">
