@@ -78,6 +78,18 @@ import imgDetDeblurred1 from '../assets/projects/eval1_deblurred3_detection.jpg'
 				<div class="project-item">
 					<h3>灭火、救援机器人共性关键技术研究（国家重点研发计划）<span class="project-date">2024.10 – 至今</span></h3>
 
+					<div class="video-wrapper">
+						<iframe
+							src="//player.bilibili.com/player.html?bvid=BV1AyNJ6kEJx&autoplay=0"
+							scrolling="no"
+							border="0"
+							frameborder="no"
+							framespacing="0"
+							allowfullscreen="true"
+							loading="lazy"
+						></iframe>
+					</div>
+
 					<div class="project-sub">
 						<h4>SLAM 定位</h4>
 						<p>基于 FAST-LIO 和 FAST-LIO2 算法，引入 <strong>OctVox 紧凑地图结构</strong>与 <strong>HKNN 启发式 KNN 搜索策略</strong>，在保证 LIO 系统定位精度的前提下减少计算开销，避免在 ARM 平台（Jetson 系列）上抢占过多用于导航和视觉检测的算力。在无回环检测情况下，实现长距离（&gt;100m）定位精度 &lt;15cm。</p>
@@ -368,6 +380,23 @@ import imgDetDeblurred1 from '../assets/projects/eval1_deblurred3_detection.jpg'
 		color: rgb(var(--gray-dark));
 		margin-bottom: 0.5em;
 		line-height: 1.7;
+	}
+
+	.video-wrapper {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		margin: 1em 0;
+		overflow: hidden;
+		border-radius: 6px;
+	}
+	.video-wrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
 	}
 
 	.project-sub {
